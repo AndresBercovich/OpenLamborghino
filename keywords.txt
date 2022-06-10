@@ -1,0 +1,9 @@
+OpenLamborghino	KEYWORD1
+WaitBoton	KEYWORD2
+IfBoton		KEYWORD2
+LineaNegra	KEYWORD2
+LineaBlanca	KEYWORD2
+calibracion KEYWORD2
+EncoderIz   KEYWORD2
+EncoderDe   KEYWORD2
+beep		KEYWORD2
