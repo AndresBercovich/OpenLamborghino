@@ -1,8 +1,8 @@
 #include "config.h"
+
 int v_s_min[8] = {1023, 1023, 1023, 1023, 1023, 1023, 1023, 1023};
 int v_s_max[8] = {0, 0, 0, 0, 0, 0, 0, 0};
 volatile int s_p[6];
-int side_sensor_x[2] = {0, 0}; //LEFT, RIGHT
 bool online;
 
 int l_pos;

@@ -1,4 +1,4 @@
-
+#include "config.h"
 
 void Peripherals_init() {
   pinMode(PINBOTON, INPUT);

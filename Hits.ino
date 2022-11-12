@@ -1,4 +1,5 @@
 #include "config.h"
+
 int umbral = 400;
 int geo = 0;
 
@@ -54,6 +55,7 @@ void getGeo() {
   if (HL && HR) {
     if (!trigger[2]) {
       trigger[2] = 1;
+      tone(PINBUZZER, 3500, 50);
     }
   }
   else if (!HL && !HR)
@@ -75,7 +77,7 @@ void curve_sensor() {
 //que indican el inicio o termino de la pista
 void finish_sensor() {
   tone(PINBUZZER, 3000, 50);
-
+  finish_count++;
 #ifdef DEBUG
   Serial.println("linea de curva inicio/termino detectada");
 #endif
