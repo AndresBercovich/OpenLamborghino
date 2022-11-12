@@ -1,20 +1,13 @@
-boolean trigger[2] = {0, 0}
+bool trigger[2] = {0, 0}
 
 int umbral = 700;
 int geo = 0;
 
-int HL, HR = 0;
+bool HL, HR = 0;
 
 void readSideSensors() {
-
-  HL = analogRead(A7);
-  HR = analogRead(A0);
-
-  if (HR > umbral) {
-    HR = 0;
-  } else {
-    HR = 1;
-  }
+  HR = analogRead(A0) < umbral;
+  HL = analogRead(A7) < umbral;
 }
 
 void getGeo() {

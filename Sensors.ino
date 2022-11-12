@@ -2,7 +2,7 @@
 int v_s_min[6] = {1023, 1023, 1023, 1023, 1023, 1023};
 int v_s_max[6] = {0, 0, 0, 0, 0, 0};
 volatile int s_p[6];
-boolean online;
+bool online;
 
 int l_pos;
 
