@@ -1,4 +1,4 @@
-bool trigger[2] = {0, 0}
+bool trigger[2] = {0, 0};
 
 int umbral = 700;
 int geo = 0;

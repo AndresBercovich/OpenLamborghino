@@ -20,8 +20,11 @@ void calibracion() {
     v_s[3] = analogRead(A3);
     v_s[4] = analogRead(A2);
     v_s[5] = analogRead(A1);
+    v_s[6] = analogRead(A0); //HR
+    v_s[7] = analogRead(A7); //HL
 
-    for (int i = 0; i < 6; i++) {
+
+    for (int i = 0; i < 8; i++) {
 
       Serial.print(v_s[i]);
       Serial.print("\t");
@@ -29,14 +32,14 @@ void calibracion() {
     }
     Serial.println();
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 8; i++) {
       if (v_s[i] < v_s_min[i]) {
         v_s_min[i] = v_s[i];
       }
     }
 
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 8; i++) {
       if (v_s[i] > v_s_max[i]) {
         v_s_max[i] = v_s[i];
       }
@@ -50,7 +53,7 @@ void calibracion() {
   Serial.print("Mínimos ");
   Serial.print("\t");
 
-  for (int i = 0; i < 6; i++) {
+  for (int i = 0; i < 8; i++) {
 
     Serial.print(v_s_min[i]);
     Serial.print("\t");
@@ -60,7 +63,7 @@ void calibracion() {
   Serial.print("Máximos ");
   Serial.print("\t");
 
-  for (int i = 0; i < 6; i++) {
+  for (int i = 0; i < 8; i++) {
 
     Serial.print(v_s_max[i]);
     Serial.print("\t");
