@@ -2,6 +2,7 @@
 int v_s_min[8] = {1023, 1023, 1023, 1023, 1023, 1023, 1023, 1023};
 int v_s_max[8] = {0, 0, 0, 0, 0, 0, 0, 0};
 volatile int s_p[6];
+int side_sensor_x[2] = {0, 0}; //LEFT, RIGHT
 bool online;
 
 int l_pos;
@@ -55,6 +56,9 @@ void calibracion() {
         v_s_max[i] = v_s[i];
       }
     }
+
+      side_sensor_x[0] = (v_s_max[6] + v_s_min[6]) / 2; 
+      side_sensor_x[1] = (v_s_max[7] + v_s_min[7]) / 2;
   }
 
   beep();
