@@ -1,6 +1,4 @@
 #include "config.h"
-bool trigger[2] = {0, 0};
-
 int umbral = 700;
 int geo = 0;
 
