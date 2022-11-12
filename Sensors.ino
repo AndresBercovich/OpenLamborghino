@@ -1,4 +1,4 @@
-
+#include "config.h"
 int v_s_min[6] = {1023, 1023, 1023, 1023, 1023, 1023};
 int v_s_max[6] = {0, 0, 0, 0, 0, 0};
 volatile int s_p[6];
@@ -14,23 +14,34 @@ void calibracion() {
 
   for (int j = 0; j < 100; j++) {
     delay(10);
-    v_s[0] = analogRead(A6);
-    v_s[1] = analogRead(A5);
-    v_s[2] = analogRead(A4);
-    v_s[3] = analogRead(A3);
-    v_s[4] = analogRead(A2);
-    v_s[5] = analogRead(A1);
-    v_s[6] = analogRead(A0); //HR
-    v_s[7] = analogRead(A7); //HL
+    #ifdef INV_sensor
+      v_s[0] = map(analogRead(A6),0,1023,1023,0);
+      v_s[1] = map(analogRead(A5),0,1023,1023,0);
+      v_s[2] = map(analogRead(A4),0,1023,1023,0);
+      v_s[3] = map(analogRead(A3),0,1023,1023,0);
+      v_s[4] = map(analogRead(A2),0,1023,1023,0);
+      v_s[5] = map(analogRead(A1),0,1023,1023,0);
+      v_s[6] = map(analogRead(A0),0,1023,1023,0); //HR
+      v_s[7] = map(analogRead(A7),0,1023,1023,0); //HL
+    #else
+      v_s[0] = analogRead(A6);
+      v_s[1] = analogRead(A5);
+      v_s[2] = analogRead(A4);
+      v_s[3] = analogRead(A3);
+      v_s[4] = analogRead(A2);
+      v_s[5] = analogRead(A1);
+      v_s[6] = analogRead(A0); //HR
+      v_s[7] = analogRead(A7); //HL
+    #endif
+    #ifdef DEBUG 
+      for (int i = 0; i < 8; i++) {
 
+        Serial.print(v_s[i]);
+        Serial.print("\t");
 
-    for (int i = 0; i < 8; i++) {
-
-      Serial.print(v_s[i]);
-      Serial.print("\t");
-
-    }
-    Serial.println();
+      }
+      Serial.println();
+    #endif
 
     for (int i = 0; i < 8; i++) {
       if (v_s[i] < v_s_min[i]) {
@@ -49,31 +60,33 @@ void calibracion() {
   beep();
   beep();
 
-  Serial.println();
-  Serial.print("Mínimos ");
-  Serial.print("\t");
+  #ifdef DEBUG 
+    Serial.println();
+    Serial.print("Mínimos ");
+    Serial.print("\t");
+  
 
-  for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 8; i++) {
 
-    Serial.print(v_s_min[i]);
+      Serial.print(v_s_min[i]);
+      Serial.print("\t");
+
+    }
+    Serial.println();
+    Serial.print("Máximos ");
     Serial.print("\t");
 
-  }
-  Serial.println();
-  Serial.print("Máximos ");
-  Serial.print("\t");
+    for (int i = 0; i < 8; i++) {
 
-  for (int i = 0; i < 8; i++) {
+      Serial.print(v_s_max[i]);
+      Serial.print("\t");
 
-    Serial.print(v_s_max[i]);
-    Serial.print("\t");
+    }
+    Serial.println();
+    Serial.println();
+    Serial.println();
 
-  }
-  Serial.println();
-  Serial.println();
-  Serial.println();
-
-
+  #endif
 
 
 
@@ -85,13 +98,21 @@ void readSensors() {
   volatile int s[6];
 
 
-
-  s[0] = analogRead(A6);
-  s[1] = analogRead(A5);
-  s[2] = analogRead(A4);
-  s[3] = analogRead(A3);
-  s[4] = analogRead(A2);
-  s[5] = analogRead(A1);
+  #ifdef INV_sensor
+    s[0] = map(analogRead(A6),0,1023,1023,0);
+    s[1] = map(analogRead(A5),0,1023,1023,0);
+    s[2] = map(analogRead(A4),0,1023,1023,0);
+    s[3] = map(analogRead(A3),0,1023,1023,0);
+    s[4] = map(analogRead(A2),0,1023,1023,0);
+    s[5] = map(analogRead(A1),0,1023,1023,0);
+  #else
+    s[0] = analogRead(A6);
+    s[1] = analogRead(A5);
+    s[2] = analogRead(A4);
+    s[3] = analogRead(A3);
+    s[4] = analogRead(A2);
+    s[5] = analogRead(A1);
+  #endif
 
   for (int i = 0; i < 6; i++) {
     if (s[i] < v_s_min[i]) {
@@ -114,7 +135,7 @@ void readSensors() {
     sum = 100;
   }
 
-  
+  #ifdef DEBUG 
     if (online) {
       for (int i = 0; i < 6; i++) {
         Serial.print(s_p[i]);
@@ -122,7 +143,7 @@ void readSensors() {
       }
       //Serial.println();
     }
-
+  #endif
   
 
 }
