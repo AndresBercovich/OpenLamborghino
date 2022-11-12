@@ -1,6 +1,6 @@
 #include "config.h"
-int v_s_min[6] = {1023, 1023, 1023, 1023, 1023, 1023};
-int v_s_max[6] = {0, 0, 0, 0, 0, 0};
+int v_s_min[8] = {1023, 1023, 1023, 1023, 1023, 1023, 1023, 1023};
+int v_s_max[8] = {0, 0, 0, 0, 0, 0, 0, 0};
 volatile int s_p[6];
 bool online;
 
@@ -10,7 +10,7 @@ int l_pos;
 
 void calibracion() {
 
-  int v_s[6];
+  int v_s[8];
 
   for (int j = 0; j < 100; j++) {
     delay(10);
