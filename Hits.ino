@@ -14,7 +14,7 @@ void readSideSensors() {
 }
 
 void getGeo() {
-
+  readSideSensors();
   if ((HL == 0) && (HR == 0)) {
     geo = 0;
   }
