@@ -48,7 +48,7 @@ void loop() {
     Serial.println(Correction_power);
   */
 
-  ReadSensors();
+  readSideSensors();
 
 
 
