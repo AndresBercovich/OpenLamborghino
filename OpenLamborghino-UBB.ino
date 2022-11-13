@@ -42,10 +42,10 @@ void setup() {
 
 
 void loop() {
-  if(state || millis() - ms < 300){
+  if(state || millis() - ms < finish_time){
     int line_position = GetPos();
     int Correction_power = PIDLambo(line_position, Kprop, Kderiv, Kinte);
-    
+
     #ifdef PID
     Motores(base + Correction_power, base + -Correction_power);
     #endif
@@ -80,7 +80,7 @@ void loop() {
     digitalWrite(13, HIGH);
     state = true;
     finish_count = 0;
-    base += 25;
+    base += incremento;
     ms = millis();
   }
   

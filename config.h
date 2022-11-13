@@ -3,6 +3,8 @@
 #define PID
 
 #define histeresis 10
+#define incremento 25
+#define finish_time 300
 
 #define PINBUZZER  10
 #define PINBOTON  2
