@@ -57,8 +57,14 @@ void calibracion() {
       }
     }
 
-      side_sensor_x[0] = (v_s_max[6] + v_s_min[6]) / 2; 
-      side_sensor_x[1] = (v_s_max[7] + v_s_min[7]) / 2;
+      side_sensor_x[0] = (v_s_max[6] + v_s_min[6]) / 2; //A0
+      side_sensor_x[1] = (v_s_max[7] + v_s_min[7]) / 2; //A7
+
+      his_sensor_x[0][0] = side_sensor_x[0] - histeresis;
+      his_sensor_x[0][1] = side_sensor_x[0] + histeresis;
+
+      his_sensor_x[1][0] = side_sensor_x[1] - histeresis;
+      his_sensor_x[1][1] = side_sensor_x[1] + histeresis;
   }
 
   beep();

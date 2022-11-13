@@ -13,8 +13,8 @@ void readSideSensors() {
   HR = map(analogRead(A0), 0, 1023, 1023, 0) < umbral;
   HL = map(analogRead(A7), 0, 1023, 1023, 0) < umbral;
 #else
-  HR = analogRead(A0) < side_sensor_x[1];
-  HL = analogRead(A7) < side_sensor_x[0];
+  HR = analogRead(A0) < his_sensor_x[0][HR];
+  HL = analogRead(A7) < his_sensor_x[1][HL];
 #endif
 }
 

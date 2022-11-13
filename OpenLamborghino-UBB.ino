@@ -1,17 +1,16 @@
 #include "config.h"
 
-int base = 0;
+int base = 100;
 float Kprop = 1.2;
-
 float Kderiv = 7.5;
 float Kinte = 0.0;
 int pos;
 
-int side_sensor_x[2] = {0, 0}; //LEFT, RIGHT
+int side_sensor_x[2]; //LEFT, RIGHT
+int his_sensor_x[2][2]; //LEFT, RIGHT
 
 bool state = 0;
 int finish_count = 0;
-
 unsigned long ms = 0;
 
 void setup() {
@@ -43,17 +42,17 @@ void setup() {
 
 
 void loop() {
-  if(state || millis() - ms < 1000){
-    /*
+  if(state || millis() - ms < 300){
     int line_position = GetPos();
     int Correction_power = PIDLambo(line_position, Kprop, Kderiv, Kinte);
+    #ifdef PID
     Motores(base + Correction_power, base + -Correction_power);
+    #endif
     #ifdef DEBUG 
       Serial.print(line_position);
       Serial.print("\t");
       Serial.println(Correction_power);
     #endif
-    */
 
     getGeo();
     if(finish_count >= 2){
@@ -79,6 +78,7 @@ void loop() {
     digitalWrite(13, HIGH);
     state = true;
     finish_count = 0;
+    base += 25;
     ms = millis();
   }
   

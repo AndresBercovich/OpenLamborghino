@@ -1,5 +1,8 @@
-#define DEBUG 1
-//#define INV_sensor 1
+//#define DEBUG
+//#define INV_sensor
+#define PID
+
+#define histeresis 10
 
 #define PINBUZZER  10
 #define PINBOTON  2
