@@ -125,6 +125,8 @@ void readSensors() {
   #endif
 
   for (int i = 0; i < 6; i++) {
+    s[i] = constrain(s[i], v_s_min[i], v_s_max[i]);
+    /*
     if (s[i] < v_s_min[i]) {
       s[i] = v_s_min[i];
     }
@@ -132,6 +134,7 @@ void readSensors() {
     if (s[i] > v_s_max[i]) {
       s[i] = v_s_max[i];
     }
+    */
     s_p[i] = map(s[i], v_s_min[i], v_s_max[i], 100, 0);
   }
 
@@ -168,7 +171,8 @@ int GetPos() {
 
   if (online) {
     pos = int(100.0 * prom / sum);
-  } else {
+  } 
+  else {
     if (l_pos < 0) {
       pos = -255;
     }

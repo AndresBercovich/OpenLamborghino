@@ -45,9 +45,11 @@ void loop() {
   if(state || millis() - ms < 300){
     int line_position = GetPos();
     int Correction_power = PIDLambo(line_position, Kprop, Kderiv, Kinte);
+    
     #ifdef PID
     Motores(base + Correction_power, base + -Correction_power);
     #endif
+
     #ifdef DEBUG 
       Serial.print(line_position);
       Serial.print("\t");
