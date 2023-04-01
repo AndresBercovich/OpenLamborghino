@@ -11,23 +11,27 @@ int his_sensor_x[2][2]; //LEFT, RIGHT
 
 bool state = 0;
 int finish_count = 0;
+bool curva_trigg = 0;
 unsigned long ms = 0;
 
 void setup() {
   Serial.begin(115200);
   pinMode(13, OUTPUT);
   
+  pinMode(PINBOTON, INPUT);
+  pinMode(PINBUZZER, OUTPUT);
   pinMode(PINLEDON, OUTPUT);
-  digitalWrite(PINLEDON, HIGH);
+  digitalWrite(PINLEDON, LOW);
 
   digitalWrite(13, LOW);
   Serial.println("hola");
   Motores(0, 0);
   WaitBoton();
-  digitalWrite(13, HIGH);
-  Peripherals_init();
 
-  beep();
+  digitalWrite(13, HIGH);
+
+  tone(PINBUZZER, 2000, 100);
+  digitalWrite(PINLEDON, HIGH);
   delay(1000);
   calibracion();
 
@@ -37,6 +41,11 @@ void setup() {
   tone(PINBUZZER, 1500, 50);
   delay(70);
 
+  #ifdef MOTOR_TEST
+    Motores(50, 50);
+    delay(500);
+    Motores(0, 0);
+  #endif
   
 }
 
@@ -47,7 +56,7 @@ void loop() {
     int Correction_power = PIDLambo(line_position, Kprop, Kderiv, Kinte);
 
     #ifdef PID
-    Motores(base + Correction_power, base + -Correction_power);
+      Motores(base + Correction_power, base + -Correction_power);
     #endif
 
     #ifdef DEBUG 
@@ -56,13 +65,24 @@ void loop() {
       Serial.println(Correction_power);
     #endif
 
-    getGeo();
-    if(finish_count >= 2){
-      state = false;
-    }
-    else{
+    #ifdef HITS
+      getGeo();
+      if(finish_count >= 2){
+        if(curva_trigg){
+          finish_count = 1;
+          curva_trigg = 0;
+          state = true;
+        }
+        else{
+          state = false;
+        }
+      }
+      else{
+        ms = millis();
+      }
+    #else
       ms = millis();
-    }
+    #endif
   }
   else{
     digitalWrite(13, LOW);
@@ -101,4 +121,9 @@ void loop() {
   Serial.print("\t");
   Serial.println(analogRead(A0));
 */
+}
+
+void WaitBoton() {   // Entra en un bucle infinito de espera.
+  while (!digitalRead(PINBOTON));  // Se sale del bucle cuando se aprieta el botón
+  tone(PINBUZZER, 2000, 100);      // Cuando sale del bucle, suena el buzzer
 }

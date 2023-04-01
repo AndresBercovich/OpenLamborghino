@@ -8,14 +8,18 @@ bool HL, HR = 0;
 bool trigger[3] = {0, 0, 0};
 bool HL_T, HR_T = 0;
 
+unsigned long side_sensor_acum[2];
+int n_sensor_acum = 0;
+unsigned long ms_sensor = 0;
+
 void readSideSensors() {
-#ifdef INV_sensor
-  HR = map(analogRead(A0), 0, 1023, 1023, 0) < umbral;
-  HL = map(analogRead(A7), 0, 1023, 1023, 0) < umbral;
-#else
-  HR = analogRead(A0) < his_sensor_x[0][HR];
-  HL = analogRead(A7) < his_sensor_x[1][HL];
-#endif
+  #ifdef INV_sensor
+    HR = analogRead(A0) > his_sensor_x[0][HR];
+    HL = analogRead(A7) > his_sensor_x[1][HL];
+  #else
+    HR = analogRead(A0) < his_sensor_x[0][HR];
+    HL = analogRead(A7) < his_sensor_x[1][HL];
+  #endif
 }
 
 void getGeo() {
@@ -68,6 +72,7 @@ void getGeo() {
 //que indican el cambio de una curva/recta
 void curve_sensor() {
   tone(PINBUZZER, 2500, 50);
+  curva_trigg = true;
 #ifdef DEBUG
   Serial.println("linea de curva detectada");
 #endif

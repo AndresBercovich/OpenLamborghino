@@ -1,9 +1,11 @@
 //#define DEBUG
 //#define INV_sensor
 #define PID
+#define HITS
+//#define MOTOR_TEST
 
-#define histeresis 10
-#define incremento 25
+#define histeresis 50
+#define incremento 10
 #define finish_time 300
 
 #define PINBUZZER  10
