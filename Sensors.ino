@@ -2,7 +2,7 @@
 
 int v_s_min[8] = {1023, 1023, 1023, 1023, 1023, 1023, 1023, 1023};
 int v_s_max[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-volatile int s_p[6];
+double s_p[6];
 bool online;
 int l_pos;
 
@@ -90,14 +90,14 @@ void readSensors() {
   for (int i = 0; i < 6; i++) {
     s[i] = constrain(s[i], v_s_min[i], v_s_max[i]);
     #ifdef INV_sensor
-      s_p[i] = map(s[i], v_s_min[i], v_s_max[i], 100, 0);
+      s_p[i] = Dmap(s[i], v_s_min[i], v_s_max[i], 0, 100);
     #else
-      s_p[i] = map(s[i], v_s_min[i], v_s_max[i], 0, 100);
+      s_p[i] = Dmap(s[i], v_s_min[i], v_s_max[i], 100, 0);
     #endif
   }
 
-  volatile int sum = s_p[0] + s_p[1] + s_p[2] + s_p[3] + s_p[4] + s_p[5];
-  if (sum > 100) {
+  double sum = s_p[0] + s_p[1] + s_p[2] + s_p[3] + s_p[4] + s_p[5];
+  if (sum > 100.0) {
     online = 1;
   } else {
     online = 0;
@@ -115,13 +115,13 @@ void readSensors() {
   #endif
 }
 
-int GetPos() {
+double GetPos() {
   readSensors();
-  int prom = -2.5 * s_p[0] - 1.5 * s_p[1] - 0.5 * s_p[2] + 0.5 * s_p[3] + 1.5 * s_p[4] + 2.5 * s_p[5];
-  int sum = s_p[0] + s_p[1] + s_p[2] + s_p[3] + s_p[4] + s_p[5];
+  double prom = -2.5 * s_p[0] - 1.5 * s_p[1] - 0.5 * s_p[2] + 0.5 * s_p[3] + 1.5 * s_p[4] + 2.5 * s_p[5];
+  double sum = s_p[0] + s_p[1] + s_p[2] + s_p[3] + s_p[4] + s_p[5];
 
   if (online) {
-    pos = int(100.0 * prom / sum);
+    pos = 100.0 * prom / sum;
   } 
   else {
     if (l_pos < 0) {

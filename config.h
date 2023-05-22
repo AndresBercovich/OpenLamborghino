@@ -1,7 +1,7 @@
 //#define DEBUG
-//#define INV_sensor
+#define INV_sensor
 #define PID
-#define HITS
+//#define HITS
 //#define MOTOR_TEST
 
 #define histeresis 50

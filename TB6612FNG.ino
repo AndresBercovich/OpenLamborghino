@@ -10,6 +10,7 @@ void TB6612FNG_init() {
 }
 
 void MotorIz(int value) {
+  value = constrain(value,-255,255);
   if(value == 0){
     digitalWrite(AIN1, LOW);
     digitalWrite(AIN2, LOW);
@@ -30,6 +31,7 @@ void MotorIz(int value) {
 
 
 void MotorDe(int value) {
+  value = constrain(value,-255,255);
   if(value == 0){
     digitalWrite(BIN1, LOW);
     digitalWrite(BIN2, LOW);

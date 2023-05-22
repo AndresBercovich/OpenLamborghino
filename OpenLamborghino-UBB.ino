@@ -1,10 +1,17 @@
 #include "config.h"
 
-int base = 100;
-float Kprop = 1.2;
-float Kderiv = 7.5;
-float Kinte = 0.0;
-int pos;
+int base = 150;
+
+
+//double Kprop = 2.0;
+//double Kderiv = 0.0;
+//double Kinte = 0.0;
+
+double Kprop = 1.2;
+double Kderiv = 7.5;
+double Kinte = 0.0;
+
+double pos;
 
 int side_sensor_x[2]; //LEFT, RIGHT
 int his_sensor_x[2][2]; //LEFT, RIGHT
@@ -22,6 +29,11 @@ void setup() {
   pinMode(PINBUZZER, OUTPUT);
   pinMode(PINLEDON, OUTPUT);
   digitalWrite(PINLEDON, LOW);
+
+  tone(PINBUZZER, 1500, 50);
+  delay(70);
+  tone(PINBUZZER, 1500, 50);
+  delay(70);
 
   digitalWrite(13, LOW);
   Serial.println("hola");
@@ -52,8 +64,8 @@ void setup() {
 
 void loop() {
   if(state || millis() - ms < finish_time){
-    int line_position = GetPos();
-    int Correction_power = PIDLambo(line_position, Kprop, Kderiv, Kinte);
+    double line_position = GetPos();
+    double Correction_power = PIDLambo(line_position, Kprop, Kderiv, Kinte);
 
     #ifdef PID
       Motores(base + Correction_power, base + -Correction_power);
@@ -126,4 +138,9 @@ void loop() {
 void WaitBoton() {   // Entra en un bucle infinito de espera.
   while (!digitalRead(PINBOTON));  // Se sale del bucle cuando se aprieta el botón
   tone(PINBUZZER, 2000, 100);      // Cuando sale del bucle, suena el buzzer
+}
+
+double Dmap(double x, double in_min, double in_max, double out_min, double out_max)
+{
+  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
