@@ -1,23 +1,30 @@
-# Open Lamborghino
+# Open Lamborghino - Robot Seguidor de Línea basado en Arduino
 
-Open Lamborghino es un robot seguidor de línea basado en Arduino. Está diseñado para trabajar con el entorno de desarrollo Open Source «Arduino» y las partes y piezas son fáciles y baratas de conseguir ¹. Este robot Open Source es fruto del trabajo desinteresado de muchas personas y está desarrollado por competidores activos de Robotracer a nivel mundial, que han facilitado el conocimiento para ayudar a introducir a los nuevos competidores ¹.
+¡Bienvenido al proyecto Open Lamborghino! Un robot seguidor de línea basado en Arduino, diseñado como un proyecto de código abierto. Este robot te permitirá adentrarte en el emocionante mundo de las competencias robóticas estandarizadas, como las competencias de "Robotracer". Aquí encontrarás toda la información necesaria para construir tu propio Open Lamborghino, aprender a utilizar y modificar el hardware y el software, y participar en competencias robóticas a nivel mundial.
 
-Con Open Lamborghino podrás introducirte en el mundo de las competencias robóticas estandarizadas como las competencias de «Robotracer». En esta página, te mostraremos cómo, cuándo y con qué participar en las competencias robóticas más importantes del mundo ¹.
+## Acerca de Open Lamborghino
 
-Construye tu propio Open Lamborghino, aprende a utilizar y a modificar el hardware y el software para hacer que tu robot sea el mejor de todos. Acá te enseñaremos cómo hacer tu propio Open Lamborghino, y te enseñaremos dónde conseguir las piezas para mejorar tu robot ¹.
+Open Lamborghino es el resultado del esfuerzo conjunto de una comunidad de entusiastas de la robótica. Está desarrollado por competidores activos de Robotracer que comparten su conocimiento para facilitar la entrada de nuevos competidores. El objetivo principal es brindar a todos la oportunidad de aprender, experimentar y mejorar sus habilidades en robótica.
 
-## ¿Cómo comienzo con Open Lamborghino?
+## Construye tu propio Open Lamborghino
 
-Para comenzar, primero consigue los componentes y construye tu robot. En esta guía te enseñaremos cómo conseguir los componentes en sus distintas alternativas y cómo ensamblarlos ¹.
+En esta guía, te proporcionaremos instrucciones detalladas sobre cómo obtener los componentes necesarios y ensamblar tu propio Open Lamborghino. Podrás encontrar una lista de piezas fácilmente disponibles y asequibles, junto con recomendaciones sobre dónde adquirirlas.
 
-Una vez construido el robot, comenzaremos a aprender cómo funcionan cada uno de los componentes del robot (solo necesitas tener conocimientos básicos de Arduino) ¹.
+## Aprende y programa
 
-Ya sabiendo programar cada uno de los componentes, es hora de comenzar con la robótica. En esta sección aprenderemos a seguir la línea, y a detectar el escenario ¹.
+Una vez que hayas construido tu robot, te guiaremos a través del proceso de comprensión y programación de cada uno de sus componentes. No se requieren conocimientos avanzados, solo necesitas estar familiarizado con Arduino a un nivel básico. Aprenderás a sacar el máximo provecho de cada elemento del robot y a utilizarlo de manera eficiente.
 
-## ¿Cómo puedo ayudar?
+## Dominando la robótica
 
-Open Lamborghino es un proyecto Open Source y puedes ayudarnos a seguir desarrollándolo. Si te ayudamos a hacer tu robot y quieres regalarnos un café, por favor colabora con nosotros a través de Patreon ¹.
+Una vez que hayas adquirido los fundamentos, nos sumergiremos en el emocionante mundo de la robótica. Aprenderemos a seguir líneas con precisión y a detectar diferentes escenarios en el entorno. Estas habilidades te permitirán participar en competencias de alto nivel y competir con otros entusiastas de la robótica.
 
+## Contribuye al proyecto
 
-(1) Front Page - Open Lamborghino. https://lamborghino.com/.
-(2) Open Lamborghino RC - Open Lamborghino. https://lamborghino.com/open-lamborghino-rc/.
+Open Lamborghino es un proyecto de código abierto y siempre estamos buscando colaboradores para seguir mejorándolo. Si este proyecto te ha sido útil y te gustaría apoyarnos, considera realizar una contribución a través de nuestro perfil de Patreon. Tu apoyo nos permitirá continuar desarrollando y manteniendo este proyecto para beneficio de la comunidad.
+
+¡Únete a la comunidad de Open Lamborghino y adéntrate en el apasionante mundo de la robótica!
+
+Para obtener más información, visita:
+
+- Página principal de Open Lamborghino: [https://lamborghino.com/](https://lamborghino.com/)
+- Open Lamborghino RC: [https://lamborghino.com/open-lamborghino-rc/](https://lamborghino.com/open-lamborghino-rc/)
