@@ -71,6 +71,8 @@ void setup() {
 
 
 void loop() {
+  int p = GetPos();
 
+  Serial.println(p);
   delay(1);
 }
