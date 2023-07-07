@@ -36,3 +36,4 @@ void Peripherals_init() {
   pinMode(PINBOTON, INPUT); // El pin del botón se configura como entrada
   pinMode(PINBUZZER, OUTPUT); // El pin del buzzer se configura como salida
   pinMode(PINLED, OUTPUT); // El pin del LED se configura como salida
+}
