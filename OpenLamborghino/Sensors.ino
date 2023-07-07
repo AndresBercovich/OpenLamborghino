@@ -9,6 +9,7 @@ int l_pos;
 
 
 void calibracion() {
+   beep();
 
   int v_s[6];
 

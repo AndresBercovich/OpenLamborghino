@@ -1,6 +1,7 @@
 
-#define PINBUZZER  10
-#define PINBOTON  2
+#define PINBUZZER 10
+#define PINBOTON 2
+#define PINLED 13
 
 int base = 0;
 float Kprop = 1.2;
@@ -11,43 +12,31 @@ int pos;
 void setup() {
   Serial.begin(115200);
   Peripherals_init();
+  TB6612FNG_init();
+  digitalWrite(PINLED, LOW);
 
-  pinMode(13, OUTPUT);
-
-
-  digitalWrite(13, LOW);
   Serial.println("hola");
   Motores(0, 0);
   WaitBoton();
-  digitalWrite(13, HIGH);
-
-  beep();
-  delay(1000);
+  digitalWrite(PINLED, HIGH);
+ 
+  delay(2000);
   calibracion();
+  digitalWrite(PINLED, LOW);
 
-  digitalWrite(13, LOW);
-  tone(PINBUZZER, 1500, 50);
-  delay(70);
-  tone(PINBUZZER, 1500, 50);
-  delay(70);
 
   WaitBoton();
   delay(1000);
-  digitalWrite(13, HIGH);
-
+  digitalWrite(PINLED, HIGH);
 }
 
 
 void loop() {
-  
-    int line_position = GetPos();
-    int Correction_power = PIDLambo(line_position, Kprop, Kderiv);
-    Motores(base + Correction_power, base + -Correction_power);
-    Serial.print(line_position);
-    Serial.print("\t");
-    Serial.println(Correction_power);
 
-
-
-
+  int line_position = GetPos();
+  int Correction_power = PIDLambo(line_position, Kprop, Kderiv);
+  Motores(base + Correction_power, base + -Correction_power);
+  Serial.print(line_position);
+  Serial.print("\t");
+  Serial.println(Correction_power);
 }
