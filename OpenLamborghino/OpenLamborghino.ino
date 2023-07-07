@@ -6,7 +6,6 @@
 int base = 0;
 float Kprop = 1.2;
 float Kderiv = 7.5;
-int pos;
 
 
 void setup() {
