@@ -12,7 +12,12 @@ void setup() {
 
   digitalWrite(PINLED, LOW);
 
-  Serial.println("hola, estamos en void setup()");
+  Serial.println("hola, vamos a calibrar a Open Lamborghino");
+  Serial.println("Instrucciones:   "
+  
+
+  Serial.println("Pon a Open Lamborghino sobre la pista");"
+  
   WaitBoton();
   digitalWrite(PINLED, HIGH);
 }
