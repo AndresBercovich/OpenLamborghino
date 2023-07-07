@@ -8,6 +8,7 @@ Vamos a comunicarnos con el robot utilizando los periféricos. En este caso, Ope
 - Un Buzzer, conectado en el pin digital 10.
 - Un LED, conectado en el pin 13, en la placa de Arduino.
 
+En esta pestaña, hay funciones básicas para utilizar los periféricos. 
 
 */
 

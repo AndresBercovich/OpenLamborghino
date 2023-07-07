@@ -1,6 +1,6 @@
 
-int v_s_min[6] = {1023, 1023, 1023, 1023, 1023, 1023};
-int v_s_max[6] = {0, 0, 0, 0, 0, 0};
+int v_s_min[6] = { 1023, 1023, 1023, 1023, 1023, 1023 };
+int v_s_max[6] = { 0, 0, 0, 0, 0, 0 };
 volatile int s_p[6];
 boolean online;
 
@@ -25,7 +25,6 @@ void calibracion() {
 
       Serial.print(v_s[i]);
       Serial.print("\t");
-
     }
     Serial.println();
 
@@ -47,34 +46,25 @@ void calibracion() {
   beep();
 
   Serial.println();
-  Serial.print("Mínimos ");
+  Serial.println();
+
+  Serial.print("Minimos");
   Serial.print("\t");
 
   for (int i = 0; i < 6; i++) {
-
     Serial.print(v_s_min[i]);
     Serial.print("\t");
-
   }
   Serial.println();
-  Serial.print("Máximos ");
+
+  Serial.print("Maximos");
   Serial.print("\t");
 
   for (int i = 0; i < 6; i++) {
-
     Serial.print(v_s_max[i]);
     Serial.print("\t");
-
   }
   Serial.println();
-  Serial.println();
-  Serial.println();
-
-
-
-
-
-
 }
 
 void readSensors() {
@@ -111,17 +101,16 @@ void readSensors() {
     sum = 100;
   }
 
-  
-    if (online) {
-      for (int i = 0; i < 6; i++) {
+
+  if (online) {
+    for (int i = 0; i < 6; i++) {
+      /*
         Serial.print(s_p[i]);
         Serial.print("\t");
-      }
-      //Serial.println();
+        */
     }
-
-  
-
+    //Serial.println();
+  }
 }
 
 

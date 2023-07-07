@@ -5,12 +5,13 @@
 int base = 0;
 float Kprop = 1.2;
 float Kderiv = 7.5;
-float Kinte = 0.0;
 int pos;
 
 
 void setup() {
   Serial.begin(115200);
+  Peripherals_init();
+
   pinMode(13, OUTPUT);
 
 
@@ -19,7 +20,6 @@ void setup() {
   Motores(0, 0);
   WaitBoton();
   digitalWrite(13, HIGH);
-  Peripherals_init();
 
   beep();
   delay(1000);
@@ -41,7 +41,7 @@ void setup() {
 void loop() {
   
     int line_position = GetPos();
-    int Correction_power = PIDLambo(line_position, Kprop, Kderiv, Kinte);
+    int Correction_power = PIDLambo(line_position, Kprop, Kderiv);
     Motores(base + Correction_power, base + -Correction_power);
     Serial.print(line_position);
     Serial.print("\t");
