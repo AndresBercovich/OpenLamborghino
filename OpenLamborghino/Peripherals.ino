@@ -13,10 +13,6 @@ En esta pestaña, hay funciones básicas para utilizar los periféricos.
 */
 
 
-// Definición de pines
-#define PINBUZZER 10
-#define PINBOTON 2
-#define PINLED 13
 
 // Función para esperar el botón
 void WaitBoton() {
