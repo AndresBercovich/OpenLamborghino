@@ -4,6 +4,7 @@ int v_s_max[6] = { 0, 0, 0, 0, 0, 0 };
 volatile int s_p[6];
 boolean online;
 
+int pos;
 int l_pos;
 
 

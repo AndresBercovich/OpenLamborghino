@@ -12,17 +12,18 @@ void setup() {
 
   digitalWrite(PINLED, LOW);
 
-  Serial.println("hola, estamos ejecutando void Setup()");
-
-
+  Serial.println("hola, estamos en void setup()");
   WaitBoton();
-
   digitalWrite(PINLED, HIGH);
 }
 
 
 void loop() {
 
-Seriall.println("Estamos en el el void loop()");
 
+  Serial.println("Ahora estamos en void loop()");
+  delay(1000);
+
+
+  
 }
