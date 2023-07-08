@@ -1,6 +1,16 @@
+
+
+
+
 # Open Lamborghino - Robot Seguidor de Línea basado en Arduino
 
 ¡Bienvenido al proyecto Open Lamborghino! Un robot seguidor de línea basado en Arduino, diseñado como un proyecto de código abierto. Este robot te permitirá adentrarte en el emocionante mundo de las competencias robóticas estandarizadas, como las competencias de "Robotracer". Aquí encontrarás toda la información necesaria para construir tu propio Open Lamborghino, aprender a utilizar y modificar el hardware y el software, y participar en competencias robóticas a nivel mundial.
+
+## Guía del repositorio
+
+En este repositorio encontrarás el código de Open Lamborghino, y 6 tutoriales para comprender paso a paso cómo funciona un robot seguidor de línea. 
+
+
 
 ## Acerca de Open Lamborghino
 
@@ -28,3 +38,6 @@ Para obtener más información, visita:
 
 - Página principal de Open Lamborghino: [https://lamborghino.com/](https://lamborghino.com/)
 - Open Lamborghino RC: [https://lamborghino.com/open-lamborghino-rc/](https://lamborghino.com/open-lamborghino-rc/)
+
+Tutoriales:
+
