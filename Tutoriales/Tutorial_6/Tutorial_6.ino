@@ -31,10 +31,11 @@ La corrección derivativa nos ayuda a amortiguar las oscilaciones provocadas por
 
 
 
-
 #define PINBUZZER 10
 #define PINBOTON 2
 #define PINLED 13
+#define PIN_Sensor_ON 11
+
 
 int posicion_ideal = 0;
 
@@ -54,6 +55,7 @@ void setup() {
   Serial.begin(115200);
   Peripherals_init();
   TB6612FNG_init();
+  Sensors_init();
 
   digitalWrite(PINLED, LOW);
   delay(500);
@@ -101,4 +103,3 @@ void loop() {
 
   delay(1);
 }
-ok 10

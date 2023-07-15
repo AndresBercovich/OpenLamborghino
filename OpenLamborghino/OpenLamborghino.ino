@@ -1,7 +1,8 @@
-
 #define PINBUZZER 10
 #define PINBOTON 2
 #define PINLED 13
+#define PIN_Sensor_ON 11
+
 
 int base = 0;
 float Kprop = 1.2;
@@ -12,6 +13,7 @@ void setup() {
   Serial.begin(115200);
   Peripherals_init();
   TB6612FNG_init();
+  Sensors_init();
   digitalWrite(PINLED, LOW);
 
   Serial.println("hola");

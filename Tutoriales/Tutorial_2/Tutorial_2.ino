@@ -1,7 +1,8 @@
-+
 #define PINBUZZER 10
 #define PINBOTON 2
 #define PINLED 13
+#define PIN_Sensor_ON 11
+
 
 
 
@@ -9,6 +10,7 @@
 void setup() {
   Serial.begin(115200);
   Peripherals_init();
+  Sensors_init();
 
   digitalWrite(PINLED, LOW);
   delay(500);
