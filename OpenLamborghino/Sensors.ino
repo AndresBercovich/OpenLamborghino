@@ -17,12 +17,12 @@ pinMode(PIN_Sensor_ON, OUTPUT);
 
 
 void calibracion() {
-  digitalWritr(PIN_Sensor_ON, HIGH);
+  digitalWrite(PIN_Sensor_ON, HIGH);
 
   int v_s[6];
 
   for (int j = 0; j < 100; j++) {
-    delay(10);
+    delay(30);
     v_s[0] = analogRead(A6);
     v_s[1] = analogRead(A5);
     v_s[2] = analogRead(A4);
@@ -74,12 +74,12 @@ void calibracion() {
     Serial.print("\t");
   }
   Serial.println();
-  digitalWritr(PIN_Sensor_ON, LOW);
+  digitalWrite(PIN_Sensor_ON, LOW);
 }
 
 void readSensors() {
 
-  digitalWritr(PIN_Sensor_ON, HIGH);
+  digitalWrite(PIN_Sensor_ON, HIGH);
 
   volatile int s[6];
 
@@ -124,7 +124,7 @@ void readSensors() {
     //Serial.println();
   }
 
-  digitalWritr(PIN_Sensor_ON, LOW);
+  digitalWrite(PIN_Sensor_ON, LOW);
 
 }
 
