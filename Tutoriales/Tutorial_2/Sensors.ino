@@ -22,7 +22,7 @@ void calibracion() {
   int v_s[6];
 
   for (int j = 0; j < 100; j++) {
-    delay(10);
+    delay(30);
     v_s[0] = analogRead(A6);
     v_s[1] = analogRead(A5);
     v_s[2] = analogRead(A4);
