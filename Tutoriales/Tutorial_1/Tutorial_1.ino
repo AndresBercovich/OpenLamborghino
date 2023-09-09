@@ -18,7 +18,7 @@ WaitBoton(): El robot queda a la espera de que se presione el botón.
 beep(): El buzzer hace bip.
 
 *Puedes revisar estas funciones en la pestaña de Peripherals
-
+.
 */
 
 
