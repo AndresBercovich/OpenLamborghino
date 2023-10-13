@@ -39,5 +39,12 @@ Para obtener más información, visita:
 - Página principal de Open Lamborghino: [https://lamborghino.com/](https://lamborghino.com/)
 - Open Lamborghino RC: [https://lamborghino.com/open-lamborghino-rc/](https://lamborghino.com/open-lamborghino-rc/)
 
-Tutoriales:
+##troubleshooting
+
+- Open Lamborghino está diseñado para ser plug and play, es decir, los componentes son relativamente baratos de conseguir y fáciles de ensamblar.
+- Algunos componentes conseguidos por Aliexpress, pueden tener fallas. (Es relativamente común). Considere comprar más de 1 pieza por cada componente.
+- Sea muy cuidadoso con poner los componentes en la orientación correcta. Revise las guidas y tutoriales para ver en qué orientación debe colocar los componentes. Si enciende el robot, con el Driver Toshiba TB6612FNG puesto en la orientación incorrecta, puede quemar el componente.
+- A pesar de que Open Lamborghino está diseñado para ser lo más estandarizado posible, debe considerar que incluso dentro de las piezas estandarizadas como los "Arduino Nano", pueden haber diferencias en el diseño e incluso los componentes. Hemos notado algunos Arduino NANO chinos, poseen un regulador de voltaje de 3.3V de 800mA, en vez de 1000mA como el original, y puede ocacionar algún comportamiento inesperado.
+- Open Lamborghino es un robot deportivo, y está diseñado para ser lo más simple posible y fácil de rediseñar posible. Siempre es posible mejorar el robot, siéntase libre de hacerlo. Ese es el objetivo.
+
 
