@@ -39,7 +39,7 @@ Para obtener más información, visita:
 - Página principal de Open Lamborghino: [https://lamborghino.com/](https://lamborghino.com/)
 - Open Lamborghino RC: [https://lamborghino.com/open-lamborghino-rc/](https://lamborghino.com/open-lamborghino-rc/)
 
-## troubleshooting
+## Troubleshooting
 
 - Open Lamborghino está diseñado para ser plug and play, es decir, los componentes son relativamente baratos de conseguir y fáciles de ensamblar.
 - Algunos componentes conseguidos por Aliexpress, pueden tener fallas. (Es relativamente común). Considere comprar más de 1 pieza por cada componente.
