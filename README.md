@@ -10,6 +10,8 @@
 
 En este repositorio encontrarás el código de Open Lamborghino, y 6 tutoriales para comprender paso a paso cómo funciona un robot seguidor de línea. 
 
+![](https://github.com/AndresBercovich/OpenLamborghino/blob/main/Open%20Lamborghino%20Pivote%202.png)
+
 Antes de comenzar, recuerda poner un pivote a tu robot. Acá ya comienza tu creatividad para que Open Lamborghinoo sea más hábil.  De todas maneras, compartimos un pivote simple para imprimir en 3D. Lo ideal es pegarlo directamente a la placa con algún adhesivo o cinta de doble contacto (la silicona caliente funciona muy bien).
 
 https://github.com/AndresBercovich/OpenLamborghino/blob/main/Pivote.stl
