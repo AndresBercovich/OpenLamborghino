@@ -37,7 +37,7 @@ void MotorIz(int value) {
   }
 
   // Setea Velocidad
-  if (value > 255){
+  if (value > 255) {
     value = 255;
   } 
 
@@ -60,7 +60,7 @@ void MotorDe(int value) {
   }
 
   // Setea Velocidad
-  if (value > 255){
+  if (value > 255) {
     value = 255;
   } 
 
