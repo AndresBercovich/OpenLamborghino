@@ -1,89 +1,121 @@
-#include "config.h"
+// Variables globales
 
-int umbral = 400;
-int geo = 0;
+bool HL_flag = 0;  // Bandera para indicar que el sensor lateral izquierdo ha detectado un pad.
+bool HR_flag = 0;  // Bandera para indicar que el sensor lateral derecho ha detectado un pad.
 
-bool HL, HR = 0;
+unsigned long flag_ms = 0;  // Almacena el tiempo en milisegundos desde la última detección de un pad.
 
-bool trigger[3] = {0, 0, 0};
-bool HL_T, HR_T = 0;
+int direccion = -1;  // Variable para almacenar la dirección del robot (-1: no definida, 0: izquierda, 1: derecha).
 
-unsigned long side_sensor_acum[2];
-int n_sensor_acum = 0;
-unsigned long ms_sensor = 0;
+/**
+ * @brief Detecta y maneja los eventos basados en la lectura de los sensores laterales.
+ * 
+ * Esta función evalúa las lecturas de los sensores laterales (HL y HR) para determinar si el robot
+ * ha pasado por un pad de curva, cruce, o un pad de inicio/fin de pista. Dependiendo del evento detectado,
+ * se ejecuta una función específica.
+ */
+void GetGeo() {
 
-void readSideSensors() {
-  #ifdef INV_sensor
-    HR = analogRead(A0) > his_sensor_x[0][HR];
-    HL = analogRead(A7) > his_sensor_x[1][HL];
-  #else
-    HR = analogRead(A0) < his_sensor_x[0][HR];
-    HL = analogRead(A7) < his_sensor_x[1][HL];
-  #endif
-}
-
-void getGeo() {
-  readSideSensors();
-  //trigger especificao HL
   if (HL) {
-    if (!trigger[0]) {
-      trigger[0] = 1;
-    }
-  }
-  else {
-    if (trigger[0]) {
-      trigger[0] = 0;
-      if (!trigger[2]) {
-        //codigo funcional del trigger
-        curve_sensor();
-      }
-    }
+    HL_flag = 1;  // Activa la bandera si el sensor lateral izquierdo detecta un pad.
+    flag_ms = millis();  // Registra el tiempo actual.
   }
 
   if (HR) {
-    if (!trigger[1]) {
-      trigger[1] = 1;
-    }
+    HR_flag = 1;  // Activa la bandera si el sensor lateral derecho detecta un pad.
+    flag_ms = millis();  // Registra el tiempo actual.
   }
-  else {
-    if (trigger[1]) {
-      trigger[1] = 0;
-      if (!trigger[2]) {
-        //codigo funcional del trigger
-        finish_sensor();
-      }
+
+  // Si ambos sensores dejaron de detectar pads y ambas banderas están activadas, es un cruce.
+  if (!HL && !HR && HL_flag && HR_flag) {
+    HL_flag = 0;
+    HR_flag = 0;
+
+    cruce_sensor();  // Llama a la función de manejo de cruces.
+  } 
+  // Si solo el sensor izquierdo detectó un pad y luego dejó de detectarlo, es una curva o fin de pista.
+  else if (!HL && !HR && HL_flag && !HR_flag) {
+    if (millis() - flag_ms > 50) {  // Asegura un tiempo mínimo para confirmar la detección.
+      HL_flag = 0;
+      HR_flag = 0;
+
+      if (direccion == -1)  // Si la dirección no está definida, la establece como 0 (izquierda).
+        direccion = 0;
+
+      if (direccion)
+        curve_sensor();  // Llama a la función de manejo de curvas.
+      else
+        finish_sensor();  // Llama a la función de manejo de fin de pista.
+    }
+  } 
+  // Si solo el sensor derecho detectó un pad y luego dejó de detectarlo, es una curva o fin de pista.
+  else if (!HL && !HR && !HL_flag && HR_flag) {
+    if (millis() - flag_ms > 50) {  // Asegura un tiempo mínimo para confirmar la detección.
+      HL_flag = 0;
+      HR_flag = 0;
+
+      if (direccion == -1)  // Si la dirección no está definida, la establece como 1 (derecha).
+        direccion = 1;
+
+      if (direccion)
+        finish_sensor();  // Llama a la función de manejo de fin de pista.
+      else
+        curve_sensor();  // Llama a la función de manejo de curvas.
     }
   }
 
-  //trigger general
-  if (HL && HR) {
-    if (!trigger[2]) {
-      trigger[2] = 1;
-      tone(PINBUZZER, 3500, 50);
+  // Si alguna bandera está activa por mucho tiempo (más de 1000 ms), se restablecen.
+  if (HL_flag || HR_flag) {
+    if (millis() - flag_ms > 1000) {
+      HL_flag = 0;
+      HR_flag = 0;
     }
-  }
-  else if (!HL && !HR)
-  {
-    trigger[2] = 0;
   }
 }
 
-//esta funcion se ejecuta cada ves que se pase por las lineas
-//que indican el cambio de una curva/recta
+/**
+ * @brief Se ejecuta cada vez que el robot pasa por un pad de curva.
+ * 
+ * Esta función emite un tono para indicar que se ha detectado un pad de curva y puede
+ * incluir lógica adicional para manejar el evento de curva.
+ */
 void curve_sensor() {
-  tone(PINBUZZER, 2500, 50);
-  curva_trigg = true;
-#ifdef DEBUG
-  Serial.println("linea de curva detectada");
+  tone(PIN_BUZZER, 2000, 50);  // Emite un tono en el buzzer para indicar la detección de una curva.
+
+#ifdef ENABLE_DEBUG
+  Serial.println("Paso por pad de curva");  // Imprime un mensaje de depuración.
 #endif
 }
 
-//esta funcion se ejecuta cada ves que se pase por las lineas
-//que indican el inicio o termino de la pista
+/**
+ * @brief Se ejecuta cada vez que el robot pasa por un pad de inicio o fin de pista.
+ * 
+ * Esta función emite un tono y aumenta el contador de finalización de pista. Si el contador
+ * llega a 2, el robot se detendrá.
+ */
 void finish_sensor() {
-  tone(PINBUZZER, 3000, 50);
-  finish_count++;
-#ifdef DEBUG
-  Serial.println("linea de curva inicio/termino detectada");
+  tone(PIN_BUZZER, 3000, 50);  // Emite un tono en el buzzer para indicar la detección de un pad de fin de pista.
+  finish_count++;  // Incrementa el contador de pads de inicio/fin de pista.
+
+#ifdef ENABLE_DEBUG
+  Serial.print("Paso por pad de inicio/termino finish_count = ");
+  Serial.println(finish_count);  // Imprime el valor actual del contador de pads.
+#endif
+}
+
+/**
+ * @brief Se ejecuta cada vez que el robot pasa por un cruce.
+ * 
+ * Esta función emite un tono para indicar que se ha detectado un cruce y resetea el contador
+ * de finalización de pista si es necesario.
+ */
+void cruce_sensor() {
+  tone(PIN_BUZZER, 1000, 50);  // Emite un tono en el buzzer para indicar la detección de un cruce.
+
+  if (finish_count >= 2)
+    finish_count = 1;  // Resetea el contador si ha llegado a 2 para evitar que el robot se detenga.
+
+#ifdef ENABLE_DEBUG
+  Serial.print("Paso por cruce");  // Imprime un mensaje de depuración.
 #endif
 }
