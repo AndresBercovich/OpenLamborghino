@@ -1,0 +1,53 @@
+[Eagle]
+Version="09 06 02"
+Platform="Windows"
+Globals="Globals"
+Desktop="Desktop"
+
+[Globals]
+AutoSaveProject=1
+UsedLibraryUrn="urn:adsk.eagle:library:412"
+UsedLibraryUrn="urn:adsk.eagle:library:16290819"
+UsedLibraryUrn="urn:adsk.eagle:library:16378527"
+UsedLibraryUrn="urn:adsk.eagle:library:16378657"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/2309407-2.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/ACS712ELCTR-20A-T.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/COM-09032.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/Diodes - PDS760-13.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/IR2101STRPBF.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/Infineon - IRLR7843TRPBF.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/LM393M_NOPB.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/MAX3232ESE.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/MHS-4.0-LCD.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/NXP Semiconductors - PMV32UP,215.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/RPI-Zero.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/SamacSys_Parts.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/TB6612FNG.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/TB6612FNG_C_8_EL.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/TB6612FNG_O_C_8_EL.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/TO229P994X240-3N.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/WS2812-2020.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/adafruit.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/arduino.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/arduino_due_shield.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/atmel.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/cap-pan40.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/con-headers-jp.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/diy-modules.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/i2c-led-controller.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/ina.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/inductor-sumida.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/jt9s-1p.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/pinhead.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/pinhead_3row.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/solpad.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/switch-omron_mod.lbr"
+UsedLibrary="C:/Users/kraed/OneDrive/Documentos/EAGLE/libraries/wirepad_edit.lbr"
+
+[Win_1]
+Type="Control Panel"
+Number=0
+
+[Desktop]
+Screen="1920 1080"
+Window="Win_1"
