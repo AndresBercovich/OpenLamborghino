@@ -35,7 +35,7 @@ void GetGeo() {
   } 
   // Si solo el sensor izquierdo detectó un pad y luego dejó de detectarlo, es una curva o fin de pista.
   else if (!HL && !HR && HL_flag && !HR_flag) {
-    if (millis() - flag_ms > 50) {  // Asegura un tiempo mínimo para confirmar la detección.
+    if (millis() - flag_ms > 100) {  // Asegura un tiempo mínimo para confirmar la detección.
       HL_flag = 0;
       HR_flag = 0;
 
@@ -50,7 +50,7 @@ void GetGeo() {
   } 
   // Si solo el sensor derecho detectó un pad y luego dejó de detectarlo, es una curva o fin de pista.
   else if (!HL && !HR && !HL_flag && HR_flag) {
-    if (millis() - flag_ms > 50) {  // Asegura un tiempo mínimo para confirmar la detección.
+    if (millis() - flag_ms > 100) {  // Asegura un tiempo mínimo para confirmar la detección.
       HL_flag = 0;
       HR_flag = 0;
 
