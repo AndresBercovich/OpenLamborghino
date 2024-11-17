@@ -190,12 +190,17 @@ int GetPos() {
   } else {
     online = false;  // Indica que el robot no está sobre la línea.
 
-    if (l_pos < 0) {
-      pos = -2500;  // Si estaba a la izquierda, asume que sigue a la izquierda.
+    if (abs(l_pos) < 750) {  // si la ultima posicion registrada es de +-750, se retorna una posicion de 0, para que el robot siga recto
+      pos = 0;
+    } else {
+      if (l_pos < 0) {
+        pos = -2500;  // Si estaba a la izquierda, asume que sigue a la izquierda.
+      }
+      if (l_pos > 0) {
+        pos = 2500;  // Si estaba a la derecha, asume que sigue a la derecha.
+      }
     }
-    if (l_pos > 0) {
-      pos = 2500;  // Si estaba a la derecha, asume que sigue a la derecha.
-    }
+
 
     HR = false;
     HL = false;

@@ -39,7 +39,9 @@ Esto es debido a que el Arduino Nano solo tiene 8 entradas analógicas, y se req
 // Define para habilitar la función de detección de hits
 #define ENABLE_HITS
 
-int base_speed = 70;  // Velocidad base del robot.
+int base_speed = 70;  // Velocidad base del robot va desde 0 a 255 (0% - 100%)
+
+int turns_count = 0;
 
 bool linea = 0;   // 1 para línea negra, 0 para línea blanca.
 bool online = 0;  // Indica si el robot está detectando la línea.
@@ -179,7 +181,11 @@ void loop() {
     digitalWrite(PIN_Sensor_ON, HIGH);
     state = true;
     finish_count = 0;
-    //base_speed += 5;       // Incrementa la velocidad base después de cada inicio.
+
+    if (turns_count >= 0)
+      base_speed += 5;  // Incrementa la velocidad base después de cada inicio.
+
+    turns_count++;
   }
 }
 

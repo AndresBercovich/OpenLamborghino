@@ -5,8 +5,6 @@ bool HR_flag = 0;  // Bandera para indicar que el sensor lateral derecho ha dete
 
 unsigned long flag_ms = 0;  // Almacena el tiempo en milisegundos desde la última detección de un pad.
 
-int direccion = -1;  // Variable para almacenar la dirección del robot (-1: no definida, 0: izquierda, 1: derecha).
-
 /**
  * @brief Detecta y maneja los eventos basados en la lectura de los sensores laterales.
  * 
@@ -17,12 +15,12 @@ int direccion = -1;  // Variable para almacenar la dirección del robot (-1: no 
 void GetGeo() {
 
   if (HL) {
-    HL_flag = 1;  // Activa la bandera si el sensor lateral izquierdo detecta un pad.
+    HL_flag = 1;         // Activa la bandera si el sensor lateral izquierdo detecta un pad.
     flag_ms = millis();  // Registra el tiempo actual.
   }
 
   if (HR) {
-    HR_flag = 1;  // Activa la bandera si el sensor lateral derecho detecta un pad.
+    HR_flag = 1;         // Activa la bandera si el sensor lateral derecho detecta un pad.
     flag_ms = millis();  // Registra el tiempo actual.
   }
 
@@ -32,41 +30,29 @@ void GetGeo() {
     HR_flag = 0;
 
     cruce_sensor();  // Llama a la función de manejo de cruces.
-  } 
+  }
   // Si solo el sensor izquierdo detectó un pad y luego dejó de detectarlo, es una curva o fin de pista.
   else if (!HL && !HR && HL_flag && !HR_flag) {
     if (millis() - flag_ms > 100) {  // Asegura un tiempo mínimo para confirmar la detección.
       HL_flag = 0;
       HR_flag = 0;
 
-      if (direccion == -1)  // Si la dirección no está definida, la establece como 0 (izquierda).
-        direccion = 0;
-
-      if (direccion)
-        curve_sensor();  // Llama a la función de manejo de curvas.
-      else
-        finish_sensor();  // Llama a la función de manejo de fin de pista.
+      curve_sensor();  // Llama a la función de manejo de curvas.
     }
-  } 
+  }
   // Si solo el sensor derecho detectó un pad y luego dejó de detectarlo, es una curva o fin de pista.
   else if (!HL && !HR && !HL_flag && HR_flag) {
     if (millis() - flag_ms > 100) {  // Asegura un tiempo mínimo para confirmar la detección.
       HL_flag = 0;
       HR_flag = 0;
 
-      if (direccion == -1)  // Si la dirección no está definida, la establece como 1 (derecha).
-        direccion = 1;
-
-      if (direccion)
-        finish_sensor();  // Llama a la función de manejo de fin de pista.
-      else
-        curve_sensor();  // Llama a la función de manejo de curvas.
+      finish_sensor();  // Llama a la función de manejo de fin de pista.
     }
   }
 
   // Si alguna bandera está activa por mucho tiempo (más de 1000 ms), se restablecen.
   if (HL_flag || HR_flag) {
-    if (millis() - flag_ms > 1000) {
+    if (millis() - flag_ms > 500) {
       HL_flag = 0;
       HR_flag = 0;
     }
@@ -95,7 +81,7 @@ void curve_sensor() {
  */
 void finish_sensor() {
   tone(PIN_BUZZER, 3000, 50);  // Emite un tono en el buzzer para indicar la detección de un pad de fin de pista.
-  finish_count++;  // Incrementa el contador de pads de inicio/fin de pista.
+  finish_count++;              // Incrementa el contador de pads de inicio/fin de pista.
 
 #ifdef ENABLE_DEBUG
   Serial.print("Paso por pad de inicio/termino finish_count = ");

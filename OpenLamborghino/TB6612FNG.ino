@@ -23,7 +23,7 @@ void Motor(int PWM_value, bool en_brake, uint8_t PWM_pin, uint8_t IN1_pin, uint8
       digitalWrite(IN1_pin, LOW);
       digitalWrite(IN2_pin, HIGH);
     }
-    
+
     // Se limita el valor absoluto de PWM_value a un rango de 0 a 255 y se envía al pin PWM.
     int PWM = constrain(abs(PWM_value), 0, 255);
     analogWrite(PWM_pin, PWM);
