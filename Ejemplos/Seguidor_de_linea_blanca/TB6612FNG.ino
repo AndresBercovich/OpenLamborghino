@@ -37,6 +37,9 @@ void MotorIz(int value) {
   }
 
   // Setea Velocidad
+  if (value > 255) {
+    value = 255;
+  } 
 
   analogWrite(PWMA, value);
 }
@@ -57,6 +60,9 @@ void MotorDe(int value) {
   }
 
   // Setea Velocidad
+  if (value > 255) {
+    value = 255;
+  } 
 
   analogWrite(PWMB, value);
 }
